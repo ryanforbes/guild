@@ -19,6 +19,11 @@ public class MessageController {
         return messageRepository.findAll();
     }
 
+    @RequestMapping("/users/{userId}/messages")
+    public List<Message> showAll(@PathVariable(value = "userId") Long userId) {
+        return messageRepository.findAllByReceiverId(userId);
+    }
+
     @PostMapping("/messages")
     public ResponseEntity<Message> save(@RequestBody Message message) {
         return new ResponseEntity<>(messageRepository.save(message), HttpStatus.CREATED);
