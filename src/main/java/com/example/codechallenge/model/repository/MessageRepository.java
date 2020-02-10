@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
     List<Message> findAllByReceiverId(Long id);
+
+    List<Message> findAllByReceiverIdAndSenderId(Long receiverId, Long senderId);
 }

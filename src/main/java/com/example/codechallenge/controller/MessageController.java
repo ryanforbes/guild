@@ -20,8 +20,12 @@ public class MessageController {
     }
 
     @RequestMapping("/users/{userId}/messages")
-    public List<Message> showAll(@PathVariable(value = "userId") Long userId) {
-        return messageRepository.findAllByReceiverId(userId);
+    public List<Message> showAll(@PathVariable(value = "userId") Long userId, @RequestParam(value = "senderId", required = false) Long senderId) {
+        if (senderId == null) {
+            return messageRepository.findAllByReceiverId(userId);
+        } else {
+            return messageRepository.findAllByReceiverIdAndSenderId(userId, senderId);
+        }
     }
 
     @PostMapping("/messages")
