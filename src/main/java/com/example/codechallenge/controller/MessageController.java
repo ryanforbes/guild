@@ -20,11 +20,6 @@ public class MessageController {
 
     private Pageable pageable = PageRequest.of(0, 100, Sort.by("createdAt").descending());
 
-    @RequestMapping("/messages")
-    public List<Message> showAll() {
-        return messageRepository.findAll();
-    }
-
     @RequestMapping("/users/{userId}/messages")
     public Page<Message> showAll(@PathVariable(value = "userId") Long userId, @RequestParam(value = "senderId", required = false) Long senderId) {
         if (senderId == null) {
