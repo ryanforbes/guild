@@ -16,9 +16,16 @@ To run the application you'll need Java 11 installed
 
 Starting the app will create the schema and import seed data from `src/main/resources/data.sql`.
 Stopping the app will cause all tables to be dropped.
+When finished, run
+```
+cd docker
+docker-compose down
+```
+to stop the database container.
+
 
 # Testing
-`message-examples.postman_collection.json` contains a postman colleciton with example calls that should work using the seed data.
+`message-examples.postman_collection.json` contains a postman collection with example calls that should work using the seed data.
 
 Normally, I'd add a testing framework for some unit and integration tests 
 
